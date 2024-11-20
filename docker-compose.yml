@@ -6,5 +6,15 @@ services:
     ports:
       - 3000:3000
     environment:
-      - 'DEFAULT_MODEL='
-      - 'OLLAMA_HOST='
+      - 'DEFAULT_MODEL=llama3.2:1b'
+      - 'OLLAMA_HOST=http://llama-server:11434'
+
+  llama-server:
+    container_name: llama-server
+    image: llama-server:latest
+    restart: unless-stopped
+    build:
+      context: ./llama-server
+    environment:
+      - OLLAMA_KEEP_ALIVE=24h
+      - OLLAMA_HOST=0.0.0.0
