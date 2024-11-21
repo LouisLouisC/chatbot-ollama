@@ -342,12 +342,12 @@ export const ChatInput = ({
           rel="noreferrer"
           className="underline"
         >
-          Chatbot Ollama
+          © 2024 GAI Bot
         </a>
-        .{' '}
+        {/* .{' '}
         {t(
           "Chatbot Ollama is an advanced chatbot kit for Ollama models aiming to mimic ChatGPT's interface and functionality.",
-        )}
+        )} */}
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { GetServerSideProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
+import Background from './background';
 
 import { useCreateReducer } from '@/hooks/useCreateReducer';
 
@@ -303,17 +304,21 @@ const Home = ({ defaultModelId }: Props) => {
       }}
     >
       <Head>
-        <title>Chatbot Ollama</title>
+        <title>GAI Bot</title>
         <meta name="description" content="ChatGPT but local." />
         <meta
           name="viewport"
-          content="height=device-height ,width=device-width, initial-scale=1, user-scalable=no"
+          content="height=device-height, width=device-width, initial-scale=1, user-scalable=no"
         />
         <link rel="icon" href="/favicon.png" />
       </Head>
+
+      <Background />
+
       {selectedConversation && (
-        <main
-          className={`flex h-screen w-screen flex-col text-sm text-white dark:text-white ${lightMode}`}
+
+        <div
+          className={`fixed bottom-4 right-4 w-full sm:w-[380px] h-[85vh] max-w-[400px] bg-gray-800 p-4 text-sm text-white shadow-lg rounded-lg ${lightMode}`}
         >
           <div className="fixed top-0 w-full sm:hidden">
             <Navbar
@@ -321,17 +326,15 @@ const Home = ({ defaultModelId }: Props) => {
               onNewConversation={handleNewConversation}
             />
           </div>
-
-          <div className="flex h-full w-full pt-[48px] sm:pt-0">
+    
+          <div className="flex h-full w-full flex-col space-y-4">
             <Chatbar />
-
-            <div className="flex flex-1">
+            <div className="flex-1 overflow-y-auto p-2 rounded-lg shadow-inner">
               <Chat stopConversationRef={stopConversationRef} />
             </div>
-
-            <Promptbar />
           </div>
-        </main>
+        </div>
+
       )}
     </HomeContext.Provider>
   );
