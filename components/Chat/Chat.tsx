@@ -323,10 +323,10 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   }, [messagesEndRef]);
 
   return (
-    <div className="relative flex-1 overflow-hidden bg-white dark:bg-[#343541]">
+    <div className="relative flex-1 overflow-y-auto bg-gradient-to-r from-green-900/20 to-[#202123]/10">
         <>
           <div
-            className="max-h-full overflow-x-hidden"
+            className="overflow-y-auto"
             ref={chatContainerRef}
             onScroll={handleScroll}
           >
@@ -367,8 +367,25 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                           })
                         }
                       />
+
+                      <ChatInput
+                        stopConversationRef={stopConversationRef}
+                        textareaRef={textareaRef}
+                        onSend={(message) => {
+                          setCurrentMessage(message);
+                          handleSend(message, 0);
+                        }}
+                        onScrollDownClick={handleScrollDown}
+                        onRegenerate={() => {
+                          if (currentMessage) {
+                            handleSend(currentMessage, 2);
+                          }
+                        }}
+                        showScrollDownButton={showScrollDownButton}
+                      />    
                     </div>
                   )}
+                  
                 </div>
               </>
             ) : (
@@ -403,25 +420,24 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                   className="h-[162px] bg-white dark:bg-[#343541]"
                   ref={messagesEndRef}
                 />
+                <ChatInput
+                  stopConversationRef={stopConversationRef}
+                  textareaRef={textareaRef}
+                  onSend={(message) => {
+                    setCurrentMessage(message);
+                    handleSend(message, 0);
+                  }}
+                  onScrollDownClick={handleScrollDown}
+                  onRegenerate={() => {
+                    if (currentMessage) {
+                      handleSend(currentMessage, 2);
+                    }
+                  }}
+                  showScrollDownButton={showScrollDownButton}
+                />
               </>
             )}
           </div>
-
-          <ChatInput
-            stopConversationRef={stopConversationRef}
-            textareaRef={textareaRef}
-            onSend={(message) => {
-              setCurrentMessage(message);
-              handleSend(message, 0);
-            }}
-            onScrollDownClick={handleScrollDown}
-            onRegenerate={() => {
-              if (currentMessage) {
-                handleSend(currentMessage, 2);
-              }
-            }}
-            showScrollDownButton={showScrollDownButton}
-          />
         </>
     </div>
   );

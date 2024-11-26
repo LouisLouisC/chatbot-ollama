@@ -1,4 +1,4 @@
-import { IconX } from '@tabler/icons-react';
+import { IconSearch, IconX } from '@tabler/icons-react';
 import { FC } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -21,8 +21,12 @@ const Search: FC<Props> = ({ placeholder, searchTerm, onSearch }) => {
 
   return (
     <div className="relative flex items-center">
+      <IconSearch
+        className="absolute left-4 text-neutral-300"
+        size={18}
+      />
       <input
-        className="w-full flex-1 rounded-md border border-neutral-600 bg-[#202123] px-4 py-3 pr-10 text-[14px] leading-3 text-white"
+        className="w-full flex-1 rounded-md border border-neutral-600 bg-[#4db6ac]/40 px-4 py-3 pl-10 pr-10 text-[14px] leading-3 text-white"
         type="text"
         placeholder={t(placeholder) || ''}
         value={searchTerm}

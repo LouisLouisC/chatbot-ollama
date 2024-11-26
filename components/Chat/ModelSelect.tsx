@@ -1,4 +1,4 @@
-import { IconExternalLink } from '@tabler/icons-react';
+import { IconCheck, IconExternalLink } from '@tabler/icons-react';
 import { useContext, useState, useEffect } from 'react';
 
 import { useTranslation } from 'next-i18next';
@@ -82,7 +82,7 @@ export const ModelSelect = () => {
       <label className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
         {t('Model')}
       </label>
-      <div className="w-full rounded-lg border border-neutral-200 bg-transparent pr-2 text-neutral-900 dark:border-neutral-600 dark:text-white">
+      <div className="w-full rounded-lg border border-white bg-transparent pr-2 text-neutral-900 dark:border-neutral-600 dark:text-white">
         <select
           className="w-full bg-transparent p-2"
           placeholder={t('Select a model') || ''}
@@ -103,15 +103,20 @@ export const ModelSelect = () => {
         </select>
       </div>
 
-      {/* Display additional properties */}
       <div className="mb-2 text-left text-neutral-700 dark:text-neutral-400">
-        <p className='mt-2'>
-          <span className="mr-16 inline-block">Size:</span>
-          <span className="inline-block">{selectedModelDetails.size}</span>
+        <p className="flex items-center space-x-4 mt-2">
+          <div className="flex items-center justify-center h-5 w-5 bg-green-700 rounded-full">
+            <IconCheck className="h-4 w-4 text-white" />
+          </div>
+          <span className="">Size:</span>
+          <span>{selectedModelDetails.size}</span>
         </p>
-        <p>
-          <span className="mr-8 inline-block">Modified:</span>
-          <span className="inline-block">{selectedModelDetails.modified}</span>
+        <p className="flex items-center space-x-4">
+          <div className="flex items-center justify-center h-5 w-5 bg-green-700 rounded-full">
+            <IconCheck className="h-4 w-4 text-white" />
+          </div>
+          <span className="">Modified:</span>
+          <span>{selectedModelDetails.modified}</span>
         </p>
       </div>
     </div>

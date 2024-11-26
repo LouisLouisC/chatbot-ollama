@@ -1,13 +1,5 @@
-import { Message } from '@/types/chat';
-import { OllamaModel } from '@/types/ollama';
-
 import { OLLAMA_HOST } from '../app/const';
 
-import {
-  ParsedEvent,
-  ReconnectInterval,
-  createParser,
-} from 'eventsource-parser';
 
 export class OllamaError extends Error {
   constructor(message: string) {
@@ -22,7 +14,9 @@ export const OllamaStream = async (
   temperature : number,
   prompt: string,
 ) => {
+
   let url = `${OLLAMA_HOST}/api/generate`;
+  console.log("URL is: ", url)
   const res = await fetch(url, {
     headers: {
       'Accept': 'application/json',
@@ -34,7 +28,7 @@ export const OllamaStream = async (
     body: JSON.stringify({
       model: model,
       prompt: prompt,
-      system: "You are a customer support chatbot for Digi Bank. Your responses should be based solely on the provided information. You are a friendly and helpful customer support representative for Digi Bank. Only answer questions related to Digi Bank services, such as account management, loan information, credit card services, interest rates, online banking, and transaction issues. Do not discuss other financial institutions or services that are unrelated to Digi Bank. Do not answer questions about topics that are unrelated to Digi Bank or its offerings. Only use information provided in the knowledge base above. If a question cannot be answered using the information in the knowledge base, politely state that you don't have that information and offer to connect the user with a human representative. Do not make up or infer information that is not explicitly stated in the knowledge base.",
+      system: systemPrompt,
       options: {
         temperature: 0,
       },
@@ -42,17 +36,26 @@ export const OllamaStream = async (
     }),
   });
 
+  
+  console.log("Response is: ", res)
+
+
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
   if (res.status !== 200) {
     const result = await res.json();
-    if (result.error) {
+    console.log("LLM Response is: ", result)
+    console.log("LLM Response Error is: ", result.message)
+    if (result.message) {
       throw new OllamaError(
-        result.error
+        result.message
       );
     } 
   }
+
+  console.log("Request Status Code: ", res.status)
+  console.log("Response: ", res)
 
   const responseStream = new ReadableStream({
     async start(controller) {
@@ -66,10 +69,12 @@ export const OllamaStream = async (
         }
         controller.close();
       } catch (e) {
+        console.log("Error Message is here: ", e)
         controller.error(e);
       }
     },
   });
   
+
   return responseStream;
 };
