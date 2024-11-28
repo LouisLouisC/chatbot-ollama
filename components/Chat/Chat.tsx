@@ -101,6 +101,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
           ...chatBody,
         });
         const controller = new AbortController();
+
+        console.log(endpoint);
         const response = await fetch(endpoint, {
           method: 'POST',
           headers: {
@@ -356,7 +358,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                       <br />
                       <br />
 
-                      <ChatInput
+                      {/* <ChatInput
                         stopConversationRef={stopConversationRef}
                         textareaRef={textareaRef}
                         onSend={(message) => {
@@ -370,7 +372,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                           }
                         }}
                         showScrollDownButton={showScrollDownButton}
-                      />    
+                      />     */}
                     </div>
                 </div>
               </>
@@ -401,7 +403,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                   className="min-h-[15vh] bg-white "
                   ref={messagesEndRef}
                 />
-                <ChatInput
+                {/* <ChatInput
                   stopConversationRef={stopConversationRef}
                   textareaRef={textareaRef}
                   onSend={(message) => {
@@ -415,10 +417,25 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                     }
                   }}
                   showScrollDownButton={showScrollDownButton}
-                />
+                /> */}
               </>
             )}
           </div>
+          <ChatInput
+            stopConversationRef={stopConversationRef}
+            textareaRef={textareaRef}
+            onSend={(message) => {
+              setCurrentMessage(message);
+              handleSend(message, 0);
+            }}
+            onScrollDownClick={handleScrollDown}
+            onRegenerate={() => {
+              if (currentMessage) {
+                handleSend(currentMessage, 2);
+              }
+            }}
+            showScrollDownButton={showScrollDownButton}
+          />
         </>
     </div>
   );

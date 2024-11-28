@@ -24,8 +24,8 @@ COPY --from=build /app/next-i18next.config.js ./next-i18next.config.js
 
 # Set the environment variable
 ENV DEFAULT_MODEL="llama3.2:3b"
-ENV OLLAMA_HOST="http://llama-server:11434"
-# ENV OLLAMA_HOST="http://louis-llm.waftest.weborion.net"
+# ENV OLLAMA_HOST="http://llama-server:11434"
+ENV OLLAMA_HOST="http://louis-llm.waftest.weborion.net"
 
 # Expose the port the app will run on
 EXPOSE 3000
