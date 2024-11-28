@@ -353,6 +353,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                       <br />
                       <br />
                       <br />
+                      <br />
+                      <br />
 
                       <ChatInput
                         stopConversationRef={stopConversationRef}
