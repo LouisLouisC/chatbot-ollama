@@ -8,7 +8,8 @@ export const config = {
 const handler = async (req: Request): Promise<Response> => {
   try {
     let url = `${OLLAMA_HOST}/api/show`;
-
+    
+    console.log("URL to fetch model is: ", url)
     const { name } = await req.json();
 
     if (typeof name !== 'string' || name.trim() === '') {

@@ -10,6 +10,8 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     let url = `${OLLAMA_HOST}/api/tags`;
 
+    console.log("URL to fetch tags is: ", url)
+
     const response = await fetch(url, {
       headers: {
         'Content-Type': 'application/json',

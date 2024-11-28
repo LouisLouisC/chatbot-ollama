@@ -32,6 +32,7 @@ import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 import { MemoizedChatMessage } from './MemoizedChatMessage';
+import botLogo from '../../logo/cloudsine.jpg';
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -323,50 +324,33 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   }, [messagesEndRef]);
 
   return (
-    <div className="relative flex-1 overflow-y-auto bg-gradient-to-r from-green-900/20 to-[#202123]/10">
+    <div className="relative flex-1 overflow-y-auto bg-white p-2 rounded-md">
         <>
+          <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#6A5ACD] overflow-y-hidden">
+            GAI Bank Bot
+          </div>
           <div
-            className="overflow-y-auto"
+            className="overflow-y-hidden"
             ref={chatContainerRef}
             onScroll={handleScroll}
           >
             {selectedConversation?.messages.length === 0 ? (
               <>
-                <div className="mx-auto flex flex-col space-y-5 md:space-y-10 px-3 pt-5 md:pt-12 sm:max-w-[600px]">
-                  <div className="text-center text-3xl font-semibold text-gray-800 dark:text-gray-100">
-                    {models.length === 0 ? (
-                      <div>
-                        <Spinner size="16px" className="mx-auto" />
+                
+                <div className="mx-auto flex flex-col space-y-5 md:space-y-10 px-3 pt-5 md:pt-12 sm:max-w-[600px] ">
+                    <div className="mt-5 flex h-full flex-col  p-4 bg-white text-gray-800">
+                      <div className="flex items-start space-x-4">
+                        <img src={botLogo.src} alt="Bot Icon" width={30} height={30}/>
+                        <div className="rounded-lg border border-neutral-600 p-4">
+                          <p>Good day to you! I am a GenAI chatbot implemented on GAI Bank's website. I am powered by GenAI, hosted on AWS with some RAG augmentation tied to the bank.</p>
+                        </div>
                       </div>
-                    ) : (
-                      'GAI Bot'
-                    )}
-                  </div>
-
-                  {models.length > 0 && (
-                    <div className="flex h-full flex-col space-y-4 rounded-lg border border-neutral-200 p-4 dark:border-neutral-600">
-                      <ModelSelect />
-
-                      <SystemPrompt
-                        conversation={selectedConversation}
-                        prompts={prompts}
-                        onChangePrompt={(prompt) =>
-                          handleUpdateConversation(selectedConversation, {
-                            key: 'prompt',
-                            value: prompt,
-                          })
-                        }
-                      />
-
-                      <TemperatureSlider
-                        label={t('Temperature')}
-                        onChangeTemperature={(temperature) =>
-                          handleUpdateConversation(selectedConversation, {
-                            key: 'temperature',
-                            value: temperature,
-                          })
-                        }
-                      />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
 
                       <ChatInput
                         stopConversationRef={stopConversationRef}
@@ -384,20 +368,13 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         showScrollDownButton={showScrollDownButton}
                       />    
                     </div>
-                  )}
-                  
                 </div>
               </>
             ) : (
               <>
-                {showSettings && (
-                  <div className="flex flex-col space-y-10 md:mx-auto md:max-w-xl md:gap-6 md:py-3 md:pt-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
-                    <div className="flex h-full flex-col space-y-4 border-b border-neutral-200 p-4 dark:border-neutral-600 md:rounded-lg md:border">
-                      <ModelSelect />
-                    </div>
-                  </div>
-                )}
-
+                <br />
+                <br />
+                <br />
                 {selectedConversation?.messages.map((message, index) => (
                   <MemoizedChatMessage
                     key={index}
@@ -417,7 +394,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                 {loading && <ChatLoader />}
 
                 <div
-                  className="h-[162px] bg-white dark:bg-[#343541]"
+                  className="min-h-[15vh] bg-white "
                   ref={messagesEndRef}
                 />
                 <ChatInput

@@ -240,7 +240,7 @@ export const ChatInput = ({
 
   return (
     <div className="absolute bottom-0 left-0 w-full border-transparent md:pt-2">
-      <div className="stretch mx-2 mt-4 flex flex-row gap-3 last:mb-2 md:mx-4 md:mt-[52px] md:last:mb-6 lg:mx-auto lg:max-w-3xl">
+      <div className="stretch mx-2 mt-4 flex flex-row gap-3 last:mb-2 md:mx-4 md:mt-[50px] md:last:mb-6 lg:mx-auto lg:max-w-3xl">
         {messageIsStreaming && (
           <button
             className="absolute top-0 left-0 right-0 mx-auto mb-3 flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black hover:opacity-50 dark:border-neutral-600 dark:bg-[#343541] dark:text-white md:mb-0 md:mt-2"
@@ -250,7 +250,7 @@ export const ChatInput = ({
           </button>
         )}
 
-        {!messageIsStreaming &&
+        {/* {!messageIsStreaming &&
           selectedConversation &&
           selectedConversation.messages.length > 0 && (
             <button
@@ -259,17 +259,12 @@ export const ChatInput = ({
             >
               <IconRepeat size={16} /> {t('Regenerate response')}
             </button>
-          )}
+          )} */}
 
-        <div className="relative mx-2 flex w-full flex-grow flex-col rounded-md border border-black/10 shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:text-white dark:shadow-[0_0_15px_rgba(0,0,0,0.10)] sm:mx-4">
-          <div
-            className="absolute left-2 top-4 rounded-sm p-1 text-neutral-800 opacity-60 dark:text-neutral-100 dark:hover:text-neutral-200"
-          >
-            <IconBolt size={20} />
-          </div>
+        <div className="relative mx-2 flex w-full flex-grow flex-col rounded-md border border-gray-300 shadow-md sm:mx-4">
           <textarea
             ref={textareaRef}
-            className="m-0 w-full resize-none border-0 bg-[#2e3a3b]/40 p-0 py-2 pr-8 pl-10 text-black dark:text-white md:py-3 md:pl-10 rounded-lg border-2 border-white"
+            className="m-0 w-full resize-none border-0 bg-white p-2 pr-12 pl-4 text-black rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             style={{
               resize: 'none',
               bottom: `${textareaRef?.current?.scrollHeight}px`,
@@ -281,7 +276,7 @@ export const ChatInput = ({
               }`,
             }}
             placeholder={
-              t('Type a message or type "/" to select a prompt...') || ''
+              t('Type a message ...') || ''
             }
             value={content}
             rows={1}
@@ -292,15 +287,16 @@ export const ChatInput = ({
           />
 
           <button
-            className="absolute right-2 top-4 rounded-md p-2 text-neutral-800 opacity-60 bg-[#4e8d7c] hover:text-neutral-900 dark:bg-opacity-50 dark:text-neutral-100 dark:hover:text-neutral-200"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-md p-2 text-white bg-purple-600 hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition"
             onClick={handleSend}
           >
             {messageIsStreaming ? (
-              <div className="h-4 w-4 animate-spin rounded-full border-t-2 border-neutral-800 opacity-60 dark:border-neutral-100"></div>
+              <div className="h-4 w-4 animate-spin rounded-full border-t-2 border-white"></div>
             ) : (
-              <IconSend size={18} />
+              <IconSend size={15} />
             )}
           </button>
+          
 
           {showScrollDownButton && (
             <div className="absolute bottom-12 right-0 lg:bottom-0 lg:-right-10">
@@ -335,7 +331,7 @@ export const ChatInput = ({
           )}
         </div>
       </div>
-      <div className="px-3 pt-2 pb-3 text-center text-[12px] text-black/50 dark:text-white/50 md:px-4 md:pt-3 md:pb-6">
+      <div className="px-3 pt-2 pb-3 text-center text-[12px] text-black/50 dark:text-black/50 md:px-4 md:pt-3 md:pb-6">
         <a
           href="https://github.com/ivanfioravanti/chatbot-ollama"
           target="_blank"

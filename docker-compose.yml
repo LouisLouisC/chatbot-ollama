@@ -9,9 +9,10 @@ services:
     ports:
       - 80:3000
     environment:
-      - 'DEFAULT_MODEL=llama3.2:1b'
+      - 'DEFAULT_MODEL=llama3.2:3b'
       - 'OLLAMA_HOST=http://louis-llm.waftest.weborion.net'
-
+      # - OLLAMA_HOST=http://llama-server:11434
+      
   llama-server:
     container_name: llama-server
     image: llama-server:latest

@@ -318,7 +318,7 @@ const Home = ({ defaultModelId }: Props) => {
       {selectedConversation && (
 
         <div
-          className={`fixed bottom-4 right-4 w-full sm:w-[380px] h-[85vh] max-w-[400px] bg-gray-800 p-4 text-sm text-white shadow-lg rounded-lg ${lightMode}`}
+          className={`fixed bottom-4 right-4 w-full sm:w-[380px] h-[85vh] max-w-[400px] bg-[rgba(255,255,255,0.2)] p-4 text-sm text-white shadow-lg rounded-lg ${lightMode}`}
         >
           <div className="fixed top-0 w-full sm:hidden">
             <Navbar
@@ -329,7 +329,7 @@ const Home = ({ defaultModelId }: Props) => {
     
           <div className="flex h-full w-full flex-col space-y-4">
             <Chatbar />
-            <div className="flex-1 overflow-y-auto p-2 rounded-lg shadow-inner">
+            <div className="flex-1 overflow-y-auto p-2">
               <Chat stopConversationRef={stopConversationRef} />
             </div>
           </div>
