@@ -326,118 +326,91 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   }, [messagesEndRef]);
 
   return (
-    <div className="relative flex-1 overflow-y-auto bg-white p-2 rounded-md h-full">
-        <>
-          <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#000080] overflow-y-hidden">
-            Super Bank Bot
-          </div>
-          <div
-            className="overflow-y-hidden"
-            ref={chatContainerRef}
-            onScroll={handleScroll}
-          >
-            {selectedConversation?.messages.length === 0 ? (
-              <>
-                
-                <div className="mx-auto flex flex-col space-y-5 md:space-y-10 px-3 pt-5 md:pt-12 sm:max-w-[600px] ">
-                    <div className="mt-5 flex h-full flex-col  p-4 bg-white text-gray-800">
-                      <div className="flex items-start space-x-4">
-                        <img src={botLogo.src} alt="Bot Icon" width={30} height={30}/>
-                        <div className="rounded-lg border border-neutral-600 p-4">
-                          <p>Welcome to GAI Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
-                          <br />
-                          <p>How can I help you today?</p>
+    <div className="relative flex-1 overflow-y-hidden bg-white p-2 rounded-md h-full">
+        
+      <div className="relative mt-6 flex-1 overflow-y-auto bg-white rounded-md h-full">
+          <>
+            <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#000080] overflow-y-hidden">
+              Super Bank Bot
+            </div>
+            <div
+              className="overflow-y-hidden"
+              ref={chatContainerRef}
+              onScroll={handleScroll}
+            >
+              {selectedConversation?.messages.length === 0 ? (
+                <>
+                  
+                  <div className="mx-auto flex flex-col space-y-5 md:space-y-10 px-3 pt-5 md:pt-12 sm:max-w-[600px] ">
+                      <div className="mt-5 flex h-full flex-col  p-4 bg-white text-gray-800">
+                        <div className="flex items-start space-x-4">
+                          <img src={botLogo.src} alt="Bot Icon" width={30} height={30}/>
+                          <div className="rounded-lg border border-neutral-600 p-4">
+                            <p>Welcome to GAI Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
+                            <br />
+                            <p>How can I help you today?</p>
+                          </div>
                         </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <br />
                       </div>
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
-                      <br />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <br />
+                  <br />
+                  <br />
+                  {selectedConversation?.messages.map((message, index) => (
+                    <MemoizedChatMessage
+                      key={index}
+                      message={message}
+                      messageIndex={index}
+                      onEdit={(editedMessage) => {
+                        setCurrentMessage(editedMessage);
+                        // discard edited message and the ones that come after then resend
+                        handleSend(
+                          editedMessage,
+                          selectedConversation?.messages.length - index,
+                        );
+                      }}
+                    />
+                  ))}
 
-                      {/* <ChatInput
-                        stopConversationRef={stopConversationRef}
-                        textareaRef={textareaRef}
-                        onSend={(message) => {
-                          setCurrentMessage(message);
-                          handleSend(message, 0);
-                        }}
-                        onScrollDownClick={handleScrollDown}
-                        onRegenerate={() => {
-                          if (currentMessage) {
-                            handleSend(currentMessage, 2);
-                          }
-                        }}
-                        showScrollDownButton={showScrollDownButton}
-                      />     */}
-                    </div>
-                </div>
-              </>
-            ) : (
-              <>
-                <br />
-                <br />
-                <br />
-                {selectedConversation?.messages.map((message, index) => (
-                  <MemoizedChatMessage
-                    key={index}
-                    message={message}
-                    messageIndex={index}
-                    onEdit={(editedMessage) => {
-                      setCurrentMessage(editedMessage);
-                      // discard edited message and the ones that come after then resend
-                      handleSend(
-                        editedMessage,
-                        selectedConversation?.messages.length - index,
-                      );
-                    }}
+                  {loading && <ChatLoader />}
+
+                  <div
+                    className="min-h-[15vh] bg-white "
+                    ref={messagesEndRef}
                   />
-                ))}
-
-                {loading && <ChatLoader />}
-
-                <div
-                  className="min-h-[15vh] bg-white "
-                  ref={messagesEndRef}
-                />
-                {/* <ChatInput
-                  stopConversationRef={stopConversationRef}
-                  textareaRef={textareaRef}
-                  onSend={(message) => {
-                    setCurrentMessage(message);
-                    handleSend(message, 0);
-                  }}
-                  onScrollDownClick={handleScrollDown}
-                  onRegenerate={() => {
-                    if (currentMessage) {
-                      handleSend(currentMessage, 2);
-                    }
-                  }}
-                  showScrollDownButton={showScrollDownButton}
-                /> */}
-              </>
-            )}
-          </div>
-          <ChatInput
-            stopConversationRef={stopConversationRef}
-            textareaRef={textareaRef}
-            onSend={(message) => {
-              setCurrentMessage(message);
-              handleSend(message, 0);
-            }}
-            onScrollDownClick={handleScrollDown}
-            onRegenerate={() => {
-              if (currentMessage) {
-                handleSend(currentMessage, 2);
-              }
-            }}
-            showScrollDownButton={showScrollDownButton}
-          />
-        </>
+                </>
+              )}
+            </div>
+          </>
+      </div>
+      <ChatInput
+        stopConversationRef={stopConversationRef}
+        textareaRef={textareaRef}
+        onSend={(message) => {
+          setCurrentMessage(message);
+          handleSend(message, 0);
+        }}
+        onScrollDownClick={handleScrollDown}
+        onRegenerate={() => {
+          if (currentMessage) {
+            handleSend(currentMessage, 2);
+          }
+        }}
+        showScrollDownButton={showScrollDownButton}
+      />
     </div>
+    
   );
 });
 Chat.displayName = 'Chat';
