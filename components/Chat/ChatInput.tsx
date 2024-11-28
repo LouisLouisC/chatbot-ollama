@@ -241,14 +241,14 @@ export const ChatInput = ({
   return (
     <div className="absolute bottom-0 left-0 w-full border-transparent md:pt-2">
       <div className="stretch mx-2 mt-4 flex flex-row gap-3 last:mb-2 md:mx-4 md:mt-[50px] md:last:mb-6 lg:mx-auto lg:max-w-3xl">
-        {messageIsStreaming && (
-          <button
-            className="absolute top-0 left-0 right-0 mx-auto mb-3 flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black hover:opacity-50 dark:border-neutral-600 dark:bg-[#343541] dark:text-white md:mb-0 md:mt-2"
-            onClick={handleStopConversation}
-          >
-            <IconPlayerStop size={16} /> {t('Stop Generating')}
-          </button>
-        )}
+        {/* {messageIsStreaming && (
+          // <button
+          //   className="absolute top-0 left-0 right-0 mx-auto mb-3 flex w-fit items-center gap-3 rounded border border-neutral-200 bg-white py-2 px-4 text-black hover:opacity-50 dark:border-neutral-600 dark:text-black md:mb-0 md:mt-2"
+          //   onClick={handleStopConversation}
+          // >
+          //   <IconPlayerStop size={16} /> {t('Stop Generating')}
+          // </button>
+        )} */}
 
         {/* {!messageIsStreaming &&
           selectedConversation &&
@@ -301,7 +301,7 @@ export const ChatInput = ({
           {showScrollDownButton && (
             <div className="absolute bottom-12 right-0 lg:bottom-0 lg:-right-10">
               <button
-                className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-300 text-gray-800 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-neutral-200"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-neutral-300 text-gray-800 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-white dark:text-neutral-200"
                 onClick={onScrollDownClick}
               >
                 <IconArrowDown size={18} />
@@ -338,12 +338,12 @@ export const ChatInput = ({
           rel="noreferrer"
           className="underline"
         >
-          © 2024 GAI Bot
+          © 2024 Super Bank Bot
         </a>
-        {/* .{' '}
+        .{' '}
         {t(
-          "Chatbot Ollama is an advanced chatbot kit for Ollama models aiming to mimic ChatGPT's interface and functionality.",
-        )} */}
+          "Powered by LLM, and includes RAG augmentation for enhanced assistance.",
+        )}
       </div>
     </div>
   );

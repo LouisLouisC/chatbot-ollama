@@ -304,7 +304,7 @@ const Home = ({ defaultModelId }: Props) => {
       }}
     >
       <Head>
-        <title>GAI Bot</title>
+        <title>Super Bank</title>
         <meta name="description" content="ChatGPT but local." />
         <meta
           name="viewport"

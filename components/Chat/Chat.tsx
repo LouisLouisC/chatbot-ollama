@@ -32,7 +32,7 @@ import { ModelSelect } from './ModelSelect';
 import { SystemPrompt } from './SystemPrompt';
 import { TemperatureSlider } from './Temperature';
 import { MemoizedChatMessage } from './MemoizedChatMessage';
-import botLogo from '../../logo/cloudsine.jpg';
+import botLogo from '../../logo/bank.png';
 
 interface Props {
   stopConversationRef: MutableRefObject<boolean>;
@@ -327,7 +327,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
     <div className="relative flex-1 overflow-y-auto bg-white p-2 rounded-md">
         <>
           <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#6A5ACD] overflow-y-hidden">
-            GAI Bank Bot
+            Super Bank Bot
           </div>
           <div
             className="overflow-y-hidden"
@@ -342,7 +342,9 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                       <div className="flex items-start space-x-4">
                         <img src={botLogo.src} alt="Bot Icon" width={30} height={30}/>
                         <div className="rounded-lg border border-neutral-600 p-4">
-                          <p>Good day to you! I am a GenAI chatbot implemented on GAI Bank's website. I am powered by GenAI, hosted on AWS with some RAG augmentation tied to the bank.</p>
+                          <p>Welcome to GAI Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
+                          <br />
+                          <p>How can I help you today?</p>
                         </div>
                       </div>
                       <br />

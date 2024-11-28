@@ -24,7 +24,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
 import userLogo from '../../logo/user.png';
-import botLogo from '../../logo/cloudsine.jpg';
+import botLogo from '../../logo/bank.png';
 
 export interface Props {
   message: Message;
