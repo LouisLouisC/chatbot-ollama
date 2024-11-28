@@ -100,7 +100,7 @@ const Sidebar = <T,>({
         {footerComponent}
         <div className="flex items-center w-full">
           <button
-            className="flex w-[75%] flex-shrink-0 cursor-pointer select-none items-center justify-center gap-3 rounded-md border border-gray-300 p-3 text-gray-800 transition-colors duration-200 hover:bg-gray-200"
+            className="flex w-[75%] flex-shrink-0 cursor-pointer select-none items-center justify-center gap-3 rounded-md border border-gray-300 p-3 text-gray-800 transition-colors duration-200 hover:bg-white"
             onClick={() => {
               handleCreateItem();
               handleSearchTerm('');
@@ -111,7 +111,7 @@ const Sidebar = <T,>({
           </button>
 
           <button
-            className="ml-4 flex flex-shrink-0 cursor-pointer items-center gap-3 rounded-md border border-gray-300 p-3 text-sm text-gray-800 transition-colors duration-200 hover:bg-gray-200"
+            className="ml-4 flex flex-shrink-0 cursor-pointer items-center gap-3 rounded-md border border-gray-300 p-3 text-sm text-gray-800 transition-colors duration-200 "
             onClick={handleCreateFolder}
           >
             <IconFolderPlus size={16} />

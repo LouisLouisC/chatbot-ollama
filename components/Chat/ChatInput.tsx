@@ -268,7 +268,7 @@ export const ChatInput = ({
           />
 
           <button
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-md p-2 text-white bg-purple-600 hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 rounded-md p-2 text-white bg-[#000080] hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:outline-none transition"
             onClick={handleSend}
           >
             {messageIsStreaming ? (

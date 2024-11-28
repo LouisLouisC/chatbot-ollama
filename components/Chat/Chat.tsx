@@ -326,9 +326,9 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
   }, [messagesEndRef]);
 
   return (
-    <div className="relative flex-1 overflow-y-auto bg-white p-2 rounded-md">
+    <div className="relative flex-1 overflow-y-auto bg-white p-2 rounded-md h-full">
         <>
-          <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#6A5ACD] overflow-y-hidden">
+          <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#000080] overflow-y-hidden">
             Super Bank Bot
           </div>
           <div

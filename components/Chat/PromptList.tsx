@@ -27,7 +27,7 @@ export const PromptList: FC<Props> = ({
           key={prompt.id}
           className={`${
             index === activePromptIndex
-              ? 'bg-gray-200 dark:bg-[#202123] dark:text-black'
+              ? 'bg-white dark:bg-white dark:text-black'
               : ''
           } cursor-pointer px-3 py-2 text-sm text-black dark:text-white`}
           onClick={(e) => {
