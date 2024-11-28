@@ -342,7 +342,7 @@ export const ChatInput = ({
         </a>
         .{' '}
         {t(
-          "Powered by LLM, and includes RAG augmentation for enhanced assistance.",
+          "Powered by LLM, and includes RAG for enhanced assistance.",
         )}
       </div>
     </div>
