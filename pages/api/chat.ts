@@ -34,7 +34,7 @@ const handler = async (req: Request): Promise<Response> => {
       console.log("Ollama Error: ", error.message);
 
       const encoder = new TextEncoder();
-      const responseMessage = `Error: ${error.message}`;
+      const responseMessage = `${error.message}`;
 
       const errorResponseStream = new ReadableStream({
         start(controller) {

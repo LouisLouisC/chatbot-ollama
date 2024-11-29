@@ -129,7 +129,7 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
 
   return (
     <div
-      className={`group md:px-4 bg-white text-gray-800 dark:border-gray-900/50 dark:bg-white dark:text-gray-500 rounded-lg`}
+      className={`group md:px-4 bg-white text-gray-800 dark:border-gray-900/50 dark:bg-white dark:text-gray-500 rounded-lg text-sm`}
       style={{ overflowWrap: 'anywhere', marginBottom: '10px' }} // Added marginBottom for spacing between messages
     >
       <div className="relative m-auto flex p-4 text-base md:max-w-2xl md:gap-6 md:py-6 lg:max-w-2xl lg:px-0 xl:max-w-3xl">
@@ -142,7 +142,7 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
           )}
 
           {/* Message Box */}
-          <div className="prose mt-[-2px] w-full dark:prose-invert p-4 bg-white rounded-lg shadow-sm border-2 border-gray-400 dark:border-gray-200">
+          <div className="prose mt-[-2px] w-full dark:prose-invert p-4 bg-white rounded-lg shadow-sm border-2 border-gray-400 dark:border-gray-200 text-xs">
             {message.role === 'user' ? (
               <div className="flex w-full">
                 {isEditing ? (
@@ -185,7 +185,7 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
                     </div>
                   </div>
                 ) : (
-                  <div className="prose whitespace-pre-wrap flex-1 !text-gray-800">
+                  <div className="prose whitespace-pre-wrap flex-1 !text-gray-800 text-xs !text-xs">
                     {message.content}
                   </div>
                 )}
@@ -193,7 +193,7 @@ export const ChatMessage: FC<Props> = memo(({ message, messageIndex, onEdit }) =
             ) : (
               <div className="flex flex-row">
                 <MemoizedReactMarkdown
-                  className="prose dark:prose-invert flex-1 !text-gray-800 prose-a:!text-gray-800"
+                  className="proseflex-1 !text-gray-800 prose-a:!text-gray-800 prose-strong:!text-gray-800"
                   remarkPlugins={[remarkGfm, remarkMath]}
                   rehypePlugins={[rehypeMathjax]}
                   components={{

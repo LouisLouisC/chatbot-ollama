@@ -1,4 +1,4 @@
-import { IconArrowBarLeft, IconArrowBarRight } from '@tabler/icons-react';
+import { IconSettings } from '@tabler/icons-react';
 
 interface Props {
   onClick: any;
@@ -10,13 +10,13 @@ export const CloseSidebarButton = ({ onClick, side }: Props) => {
     <>
       <button
         className={`absolute top-2 ${
-          side === 'right' ? 'right-4' : 'left-4'
+          side === 'right' ? 'right-2' : 'left-2'
         } z-50 h-7 w-7 hover:text-gray-400 dark:text-white dark:hover:text-gray-300 sm:top-0.5 sm:${
-          side === 'right' ? 'right-4' : 'left-4'
+          side === 'right' ? 'right-2' : 'left-2'
         } sm:h-8 sm:w-8 sm:text-neutral-700`}
         onClick={onClick}
       >
-        {side === 'right' ? <IconArrowBarRight /> : <IconArrowBarLeft />}
+        <IconSettings />
       </button>
       <div
         onClick={onClick}
@@ -36,7 +36,7 @@ export const OpenSidebarButton = ({ onClick, side }: Props) => {
       } sm:h-8 sm:w-8 sm:text-neutral-700`}
       onClick={onClick}
     >
-      {side === 'right' ? <IconArrowBarLeft /> : <IconArrowBarRight />}
+      <IconSettings />
     </button>
   );
 };

@@ -330,11 +330,11 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
         
       <div className="relative flex-1 overflow-y-auto bg-white rounded-md h-full">
           <>
-            <div className="absolute top-0 left-0 w-full bg-gray-300 p-4 text-2xl font-semibold text-[#000080] overflow-y-hidden">
+            <div className="absolute top-0 left-0 w-full bg-gray-100 p-4 text-l font-semibold text-[#000080] overflow-y-hidden">
               Super Bank Bot
             </div>
             <div
-              className="overflow-y-hidden"
+              className="overflow-y-hidden text-sm !text-sm"
               ref={chatContainerRef}
               onScroll={handleScroll}
             >
