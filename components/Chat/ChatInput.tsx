@@ -321,7 +321,7 @@ export const ChatInput = ({
         >
           © 2024 Super Bank Bot
         </a>
-        .{' '}
+        <br />
         {t(
           "Powered by LLM and Cloudsine AI",
         )}
