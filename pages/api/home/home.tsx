@@ -36,6 +36,8 @@ import { Chat } from '@/components/Chat/Chat';
 import { Chatbar } from '@/components/Chatbar/Chatbar';
 import { Navbar } from '@/components/Mobile/Navbar';
 import Promptbar from '@/components/Promptbar';
+import { FaRobot } from 'react-icons/fa';
+import { AiOutlineClose } from 'react-icons/ai';
 
 import HomeContext from './home.context';
 import { HomeInitialState, initialState } from './home.state';
@@ -51,6 +53,12 @@ const Home = ({ defaultModelId }: Props) => {
   const { getModels } = useApiService();
   const { getModelsError } = useErrorService();
   const [initialRender, setInitialRender] = useState<boolean>(true);
+
+  const [isCollapsed, setIsCollapsed] = useState(false); // State to track collapse status
+
+  const handleCollapseToggle = () => {
+    setIsCollapsed((prevState) => !prevState); // Toggle the collapse state
+  };
 
   const contextValue = useCreateReducer<HomeInitialState>({
     initialState,
@@ -294,7 +302,7 @@ const Home = ({ defaultModelId }: Props) => {
   return (
     <HomeContext.Provider
       value={{
-        ...contextValue,
+        ...contextValue, // Assuming this contextValue is defined earlier
         handleNewConversation,
         handleCreateFolder,
         handleDeleteFolder,
@@ -315,8 +323,26 @@ const Home = ({ defaultModelId }: Props) => {
 
       <Background />
 
-      {selectedConversation && (
-
+      {/* Toggle Icon/Button */}
+      {isCollapsed ? (
+        <button
+          onClick={handleCollapseToggle}
+          className="fixed bottom-6 right-6 z-50 text-white p-3 rounded-full border-2 border-white hover:border-red-400"
+        >
+          <FaRobot size={24} />
+        </button>
+          
+        ) : (
+          <button
+            onClick={handleCollapseToggle}
+            className="fixed bottom-4 right-4 z-50 text-red p-2 rounded-full border-2 border-white hover:border-red-600"
+          >
+            <AiOutlineClose size={12} style={{ color: 'red' }}/> 
+          </button>
+          
+        )}
+      
+      {!isCollapsed && selectedConversation && (
         <div
           className={`fixed bottom-4 right-4 w-full sm:w-[380px] h-[85vh] max-w-[400px] bg-[rgba(255,255,255,0.2)] p-4 text-sm text-white shadow-lg rounded-lg ${lightMode}`}
         >
@@ -326,7 +352,7 @@ const Home = ({ defaultModelId }: Props) => {
               onNewConversation={handleNewConversation}
             />
           </div>
-    
+
           <div className="flex h-full w-full flex-col space-y-4">
             <Chatbar />
             <div className="flex-1 overflow-y-auto p-2">
@@ -334,7 +360,6 @@ const Home = ({ defaultModelId }: Props) => {
             </div>
           </div>
         </div>
-
       )}
     </HomeContext.Provider>
   );
