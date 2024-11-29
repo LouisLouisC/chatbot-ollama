@@ -346,7 +346,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         <div className="flex items-start space-x-4">
                           <img src={botLogo.src} alt="Bot Icon" width={30} height={30}/>
                           <div className="rounded-lg border border-neutral-600 p-4">
-                            <p>Welcome to GAI Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
+                            <p>Welcome to Super Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
                             <br />
                             <p>How can I help you today?</p>
                           </div>
