@@ -239,8 +239,8 @@ export const ChatInput = ({
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 w-full border-transparent md:pt-2 bg-white z-10">
-      <div className="stretch mx-2 mt-1 flex flex-row gap-3 last:mb-2 md:mx-4 md:mt-[50px] md:last:mb-6 lg:mx-auto lg:max-w-3xl bg-white">
+    <div className="absolute bottom-0 left-0 w-full border-transparent bg-white z-10">
+      <div className="stretch mx-2 mt-1 flex flex-row last:mb-2 md:mx-4 md:last:mb-6 lg:mx-auto lg:max-w-3xl">
       
         <div className="relative mx-2 flex w-full flex-grow flex-col rounded-md border border-gray-300 shadow-md sm:mx-4">
           <textarea
@@ -323,7 +323,7 @@ export const ChatInput = ({
         </a>
         .{' '}
         {t(
-          "Powered by LLM, and includes RAG for enhanced assistance.",
+          "Powered by LLM and Cloudsine AI",
         )}
       </div>
     </div>
