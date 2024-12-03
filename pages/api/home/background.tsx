@@ -21,7 +21,7 @@ function Background() {
         <nav className="absolute top-0 left-0 w-full bg-transparent p-6 sm:p-8 z-10">
           <div className="flex justify-between items-center">
             <div className="text-3xl font-bold">
-              <a href="#">SuperBank</a>
+              <a href="#">SuperIntelligentBank</a>
             </div>
             <div className="flex space-x-6 text-lg font-medium">
               <a href="#home" className="hover:text-teal-300 transition">Home</a>

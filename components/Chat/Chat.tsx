@@ -92,7 +92,8 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
         const chatBody: ChatBody = {
           model: updatedConversation.model.name,
           system: updatedConversation.prompt,
-          prompt: updatedConversation.messages.map(message => message.content).join(' '),
+          // prompt: updatedConversation.messages.map(message => message.content).join(' '),
+          prompt: message.content,
           options: { temperature: updatedConversation.temperature },
         };
         const endpoint = getEndpoint();
@@ -331,7 +332,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
       <div className="relative flex-1 overflow-y-auto bg-white rounded-md h-full">
           <>
             <div className="absolute top-0 left-0 w-full bg-gray-100 p-4 text-l font-semibold text-[#000080] overflow-y-hidden">
-              Super Bank Bot
+              Super Intelligent Bank Bot
             </div>
             <div
               className="overflow-y-hidden text-sm !text-sm"
@@ -346,7 +347,7 @@ export const Chat = memo(({ stopConversationRef }: Props) => {
                         <div className="flex items-start space-x-4">
                           <img src={botLogo.src} alt="Bot Icon" width={30} height={30}/>
                           <div className="rounded-lg border border-neutral-600 p-4">
-                            <p>Welcome to Super Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
+                            <p>Welcome to Super Intelligent Bank! I’m your virtual assistant, here to help you with all your banking needs.</p>
                             <br />
                             <p>How can I help you today?</p>
                           </div>

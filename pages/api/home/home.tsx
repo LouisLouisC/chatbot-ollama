@@ -312,7 +312,7 @@ const Home = ({ defaultModelId }: Props) => {
       }}
     >
       <Head>
-        <title>Super Bank</title>
+        <title>Super Intelligent Bank</title>
         <meta name="description" content="ChatGPT but local." />
         <meta
           name="viewport"

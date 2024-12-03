@@ -319,7 +319,7 @@ export const ChatInput = ({
           rel="noreferrer"
           className="underline"
         >
-          © 2024 Super Bank Bot
+          © 2024 Super Intelligent Bank Bot
         </a>
         <br />
         {t(
